@@ -1,10 +1,11 @@
 // src/components/PaperCard.jsx
 import { motion } from 'framer-motion';
 
-export default function PaperCard({ src, alt, top, left }) {
+// PaperCard.jsx
+export default function PaperCard({ src, alt, top, left, size = 'w-32' }) {
   return (
     <motion.div
-      className="absolute w-15 sm:w-10 md:w-20 cursor-pointer"
+      className={`absolute ${size} cursor-pointer`}
       style={{ top, left }}
       whileHover={{ scale: 1.05, rotate: 2 }}
       whileTap={{ scale: 0.95 }}
