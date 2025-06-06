@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-// Define standardized dimensions (widths as percentages) for each type
-// These percentages are relative to the parent container (BulletinBoard)
 const STICKER_WIDTHS = {
   sm: '5%',
   md: '7%',
@@ -21,7 +19,6 @@ const POSTIT_WIDTHS = {
   lg: '11%',
 };
 
-// PaperCard.jsx
 export default function PaperCard({
   src, // paper texture
   alt,
@@ -32,6 +29,9 @@ export default function PaperCard({
   rot = 0, // initial rotation
   hue = null, // hue rotation in degrees
   logo = null, // logo image
+  logoSize = 50, // logo size, default is 50
+  logoOffsetX = 0, // logo offset X from 50, default is 0
+  logoOpacity = 70, // logo opacity, default is 70
   onClick = null, // on click function
 }) {
   const isSticker = type === 'sticker';
@@ -65,7 +65,7 @@ export default function PaperCard({
       className={containerClasses}
       style={{ top, left, width: currentWidth }}
       initial={{ rotate: rot, filter: imageFilter }}
-      animate={{ filter: imageFilter }} // force render on mount
+      animate={{ filter: imageFilter }}
       whileHover={{
         scale: (isPaper || isPostit) ? 1.05 : 1,
         rotate: rot + 2,
@@ -101,7 +101,8 @@ export default function PaperCard({
         <img
           src={logo}
           alt={`${alt} logo`}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-auto object-contain z-20 opacity-70"
+          className={`absolute top-[50%] left-[${50+logoOffsetX}%] -translate-x-1/2 -translate-y-1/2 h-auto object-contain z-20 opacity-${logoOpacity}`}
+          style={{ width: `${logoSize}%` }}
           draggable="false"
         />
       )}
