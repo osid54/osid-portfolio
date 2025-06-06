@@ -4,67 +4,107 @@ import React from 'react';
 // Define standardized dimensions (widths as percentages) for each type
 // These percentages are relative to the parent container (BulletinBoard)
 const STICKER_WIDTHS = {
-  sm: '5%',  // Small sticker will be 8% of the BulletinBoard's width
-  md: '7%', // Medium sticker will be 12% of the BulletinBoard's width
-  lg: '11%', // Large sticker will be 18% of the BulletinBoard's width
+  sm: '5%',
+  md: '7%',
+  lg: '11%',
 };
 
 const PAPER_WIDTHS = {
-  sm: '8%', // Small paper will be 20% of the BulletinBoard's width
-  md: '13%', // Medium paper will be 30% of the BulletinBoard's width
-  lg: '18%', // Large paper will be 45% of the BulletinBoard's width
+  sm: '8%',
+  md: '13%',
+  lg: '18%',
+};
+
+const POSTIT_WIDTHS = {
+  sm: '5%',
+  md: '7%',
+  lg: '11%',
 };
 
 // PaperCard.jsx
 export default function PaperCard({
-  src,
+  src, // paper texture
   alt,
   top,
   left,
-  size = 'md', // Default size is 'md'
-  type = 'sticker', // Default type is 'sticker'
-  rot = 0, // Initial rotation in degrees
+  size = 'md', // default is 'md' ('sm', 'md', 'lg')
+  type = 'sticker', // default is 'sticker' ('sticker', 'paper', 'postit')
+  rot = 0, // initial rotation
+  hue = null, // hue rotation in degrees
+  logo = null, // logo image
+  onClick = null, // on click function
 }) {
   const isSticker = type === 'sticker';
   const isPaper = type === 'paper';
+  const isPostit = type === 'postit';
 
-  // Determine the appropriate width percentage based on the type and size prop
   const currentWidth = isSticker
-    ? STICKER_WIDTHS[size] || STICKER_WIDTHS.md // Fallback to md if size prop is invalid for stickers
-    : PAPER_WIDTHS[size] || PAPER_WIDTHS.md;   // Fallback to md if size prop is invalid for papers
+    ? STICKER_WIDTHS[size] || STICKER_WIDTHS.md
+    : isPaper
+      ? PAPER_WIDTHS[size] || PAPER_WIDTHS.md
+      : isPostit
+        ? POSTIT_WIDTHS[size] || POSTIT_WIDTHS.md
+        : STICKER_WIDTHS.md;
 
-  // whileTap will remain conditional, only active for 'paper' type
-  const motionProps = isPaper
+  const motionDivProps = (isPaper || isPostit)
     ? {
-        whileTap: { scale: 0.95 },
-      }
-    : {}; // No whileTap for sticker type
+      whileTap: { scale: 0.95 },
+    }
+    : {};
+  const containerClasses = `absolute ${isPaper || isPostit ? 'cursor-pointer' : ''}`;
 
-  // Define base classes for the container div.
-  // The width is now set via the 'style' prop, so we remove the 'size' class from here.
-  const containerClasses = `absolute ${isPaper ? 'cursor-pointer' : ''}`;
+  let imageFilter = `drop-shadow(-1px 1px 1px rgba(0, 0, 0, .2))`;
+  let hueShift = '';
 
-  // Define classes for the image, including the base drop shadow and conditional outline
-  const imageClasses = `w-full h-auto select-none pointer-events-auto common-drop-shadow ${
-    isSticker ? 'sticker-outline-shadow' : ''
-  }`;
+  if (hue !== null && typeof hue === 'number') {
+    hueShift += ` hue-rotate(${hue}deg)`;
+  }
 
   return (
     <motion.div
       className={containerClasses}
-      // Apply top, left, and the calculated width directly to the style prop
       style={{ top, left, width: currentWidth }}
-      initial={{ rotate: rot }} // Set the initial rotation
-      whileHover={{ scale: 1.05, rotate: rot + 2 }} // Apply hover effect relative to initial rotation
-      {...motionProps} // Spread conditional motion properties (now only whileTap)
+      initial={{ rotate: rot, filter: imageFilter }}
+      animate={{ filter: imageFilter }} // force render on mount
+      whileHover={{
+        scale: (isPaper || isPostit) ? 1.05 : 1,
+        rotate: rot + 2,
+        filter: (isPaper || isPostit)
+          ? imageFilter + ' drop-shadow(0 0 3px rgba(255,255,255,0.8))'
+          : imageFilter,
+      }}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
+      {...motionDivProps}
+      onClick={(isPaper || isPostit) && onClick ? onClick : undefined}
     >
-      <img src={src} alt={alt} className={imageClasses} draggable="false" />
-      <style>{`
-        .common-drop-shadow {
-          /* Always apply a standard drop shadow */
-          filter: drop-shadow(-1px 1px 1px rgba(0, 0, 0, .2));
-        }
-      `}</style>
+      {(isPaper || isPostit) && (
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            boxShadow: '0 0 3px rgba(255,255,255,0.8)',
+            opacity: 0,
+            willChange: 'filter, opacity',
+          }}
+        />
+      )}
+      {/* paper texture */}
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-auto select-none pointer-events-auto relative z-10"
+        style={{ filter: `${isPaper || isPostit ? '' : imageFilter} ${hueShift}` }} // Apply base filter if not paper/postit, otherwise let motion.div handle it
+        draggable="false"
+      />
+
+      {/* logo */}
+      {isPostit && logo && (
+        <img
+          src={logo}
+          alt={`${alt} logo`}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-auto object-contain z-20 opacity-70"
+          draggable="false"
+        />
+      )}
     </motion.div>
   );
 }
