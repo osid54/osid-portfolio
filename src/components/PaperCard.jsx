@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 
 const STICKER_WIDTHS = {
   sm: '5%',
@@ -33,6 +33,7 @@ export default function PaperCard({
   logoOffsetX = 0, // logo offset X from 50, default is 0
   logoOpacity = 70, // logo opacity, default is 70
   onClick = null, // on click function
+  onHoverChange = null, // New prop: callback for hover state change
 }) {
   const isSticker = type === 'sticker';
   const isPaper = type === 'paper';
@@ -60,6 +61,34 @@ export default function PaperCard({
     hueShift += ` hue-rotate(${hue}deg)`;
   }
 
+  const handleMouseEnter = (e) => {
+    if (onHoverChange) {
+      onHoverChange({
+        show: true,
+        text: alt,
+        x: e.clientX,
+        y: e.clientY,
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (onHoverChange) {
+      onHoverChange({ show: false, text: '', x: 0, y: 0 });
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    if (onHoverChange) {
+      onHoverChange({
+        show: true,
+        text: alt,
+        x: e.clientX,
+        y: e.clientY,
+      });
+    }
+  };
+
   return (
     <motion.div
       className={containerClasses}
@@ -76,6 +105,9 @@ export default function PaperCard({
       transition={{ duration: 0.2, ease: 'easeOut' }}
       {...motionDivProps}
       onClick={(isPaper || isPostit) && onClick ? onClick : undefined}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseMove={handleMouseMove}
     >
       {(isPaper || isPostit) && (
         <div
@@ -92,7 +124,7 @@ export default function PaperCard({
         src={src}
         alt={alt}
         className="w-full h-auto select-none pointer-events-auto relative z-10"
-        style={{ filter: `${isPaper || isPostit ? '' : imageFilter} ${hueShift}` }} // Apply base filter if not paper/postit, otherwise let motion.div handle it
+        style={{ filter: `${isPaper || isPostit ? '' : imageFilter} ${hueShift}` }}
         draggable="false"
       />
 
@@ -101,8 +133,8 @@ export default function PaperCard({
         <img
           src={logo}
           alt={`${alt} logo`}
-          className={`absolute top-[50%] left-[${50+logoOffsetX}%] -translate-x-1/2 -translate-y-1/2 h-auto object-contain z-20 opacity-${logoOpacity}`}
-          style={{ width: `${logoSize}%` }}
+          className={`absolute top-[50%] -translate-x-1/2 -translate-y-1/2 h-auto object-contain z-20 opacity-${logoOpacity}`}
+          style={{ width: `${logoSize}%`, left: `${50 + logoOffsetX}%` }}
           draggable="false"
         />
       )}
