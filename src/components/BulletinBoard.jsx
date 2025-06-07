@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import PaperCard from './PaperCard';
+import GalleryModal from './GalleryModal';
+import PDFModal from './PDFModal';
 
 const Tooltip = ({ text, x, y, visible }) => {
   if (!visible) return null;
 
   return (
     <div
-    className='fixed rounded-sm pointer-events-none z-100 text-white'
+      className='fixed rounded-sm pointer-events-none z-100 text-white'
       style={{
         top: y + 15,
         left: x + 15,
@@ -20,7 +22,7 @@ const Tooltip = ({ text, x, y, visible }) => {
 };
 
 export default function BulletinBoard() {
-    const [tooltip, setTooltip] = useState({
+  const [tooltip, setTooltip] = useState({
     show: false,
     text: '',
     x: 0,
@@ -29,6 +31,25 @@ export default function BulletinBoard() {
 
   const handleHoverChange = (data) => {
     setTooltip(data);
+  };
+
+  const [activeGalleryModal, setActiveGalleryModal] = useState(null);
+  const [activePDFModal, setActivePDFModal] = useState(null);
+
+  const openGalleryModal = (modalData) => {
+    setActiveGalleryModal(modalData);
+  };
+
+  const closeGalleryModal = () => {
+    setActiveGalleryModal(null);
+  };
+
+  const openPDFModal = (modalData) => {
+    setActivePDFModal(modalData);
+  };
+
+  const closePDFModal = () => {
+    setActivePDFModal(null);
   };
 
   return (
@@ -58,8 +79,18 @@ export default function BulletinBoard() {
           type="paper"
           size='lg'
           rot={-4}
-          onClick={() => window.open("https://stardewdle.com/", "_blank")}
           onHoverChange={handleHoverChange}
+          //onClick={() => window.open("https://stardewdle.com/", "_blank")}
+          onClick={() => openGalleryModal({
+            imageSrc: "/assets/logos/stardewdleTitle.png",
+            linkHref: "https://stardewdle.com/",
+            textContent: "A Wordle-like game based on crops from the hit game Stardew Valley. Its frontend is built in React and hosted through AWS Amplify, and its backend is serverless through AWS Lambda, API Gateway, S3, and DynamoDB.",
+            galleryImages: [
+              '/assets/screenshots/stardewdle/stardewdle1.png',
+              '/assets/screenshots/stardewdle/stardewdle2.png',
+              '/assets/screenshots/stardewdle/stardewdle3.png',
+            ],
+          })}
         />
         <PaperCard
           src="/assets/logos/medilineLogo.png"
@@ -69,8 +100,23 @@ export default function BulletinBoard() {
           type="paper"
           size='lg'
           rot={3}
-          onClick={() => window.open("https://www.mediline-njit.com/", "_blank")}
           onHoverChange={handleHoverChange}
+          //onClick={() => window.open("https://www.mediline-njit.com/", "_blank")}
+          onClick={() => openGalleryModal({
+            imageSrc: "/assets/logos/medilineLogo.png",
+            linkHref: "https://www.mediline-njit.com/",
+            textContent: "A healthcare portal that allows patients, doctors, and pharmacists to interact and manage their data, interactions, appointments, prescriptions, invoices, and more, all through dynamic, role-based dashboards. Built upon React, Flask, and MySQL",
+            galleryImages: [
+              '/assets/screenshots/mediline/mediline1.png',
+              '/assets/screenshots/mediline/mediline2.png',
+              '/assets/screenshots/mediline/mediline3.png',
+              '/assets/screenshots/mediline/mediline4.png',
+              '/assets/screenshots/mediline/mediline5.png',
+              '/assets/screenshots/mediline/mediline6.png',
+              '/assets/screenshots/mediline/mediline7.png',
+              '/assets/screenshots/mediline/mediline8.png',
+            ],
+          })}
         />
       </div>
 
@@ -347,6 +393,9 @@ export default function BulletinBoard() {
           type="paper"
           rot={-5}
           onHoverChange={handleHoverChange}
+          onClick={() => openPDFModal({
+            pdfSrc: '/assets/aboutme.pdf',
+          })}
         />
         <PaperCard
           src="/assets/papers/resume.jpg"
@@ -356,6 +405,10 @@ export default function BulletinBoard() {
           type="paper"
           rot={3}
           onHoverChange={handleHoverChange}
+          onClick={() => openPDFModal({
+            downloadFileName: 'Omar-Siddiqui-Resume.pdf',
+            imageUrl: '/assets/pdfs/resume.png',
+          })}
         />
       </div>
 
@@ -437,17 +490,38 @@ export default function BulletinBoard() {
         />
       </div>
       <img
-          className='absolute top-[33%] left-[90%] z-10 h-6 w-8'
-          src='/assets/pins/pin1.png'
-          alt='Red Pin'
-          style={{ filter: 'hue-rotate(0deg)' }}
+        className='absolute top-[33%] left-[90%] z-10 h-6 w-8'
+        src='/assets/pins/pin1.png'
+        alt='Red Pin'
+        style={{ filter: 'hue-rotate(0deg)' }}
+      />
+      <img
+        className='absolute top-[15.5%] left-[6%] z-10 h-6 w-8'
+        src='/assets/pins/pin1.png'
+        alt='Blue Pin'
+        style={{ filter: 'hue-rotate(200deg)' }}
+      />
+
+      {/* Modals */}
+      {activeGalleryModal && (
+        <GalleryModal
+          isOpen={true}
+          onClose={closeGalleryModal}
+          imageSrc={activeGalleryModal.imageSrc}
+          linkHref={activeGalleryModal.linkHref}
+          textContent={activeGalleryModal.textContent}
+          galleryImages={activeGalleryModal.galleryImages}
         />
-        <img
-          className='absolute top-[15.5%] left-[6%] z-10 h-6 w-8'
-          src='/assets/pins/pin1.png'
-          alt='Blue Pin'
-          style={{ filter: 'hue-rotate(200deg)' }}
+      )}
+      {activePDFModal && (
+        <PDFModal
+          isOpen={true}
+          onClose={closePDFModal}
+          pdfSrc={activePDFModal.pdfSrc}
+          downloadFileName={activePDFModal.downloadFileName}
         />
+      )}
+
       <Tooltip
         text={tooltip.text}
         x={tooltip.x}
