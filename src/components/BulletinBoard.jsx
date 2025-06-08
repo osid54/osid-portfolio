@@ -65,9 +65,9 @@ export default function BulletinBoard() {
       />
 
       {/* projects */}
-      <div className="absolute top-[50%] left-[18%] w-full h-full pointer-events-none">
+      <div className="absolute top-[52%] left-[18%] w-full h-full pointer-events-none">
         <img
-          className='absolute top-[0%] left-[0%] -translate-x-1/2 z-10 scale-40'
+          className='absolute top-[3%] left-[0%] -translate-x-1/2 z-10 h-[5%]'
           src='/assets/titles/projects.png'
           alt='Projects'
         />
@@ -89,6 +89,11 @@ export default function BulletinBoard() {
               '/assets/screenshots/stardewdle/stardewdle1.png',
               '/assets/screenshots/stardewdle/stardewdle2.png',
               '/assets/screenshots/stardewdle/stardewdle3.png',
+            ],
+            captions: [
+              'The landing page, where the user can navigate to either page.',
+              'The game page, where users guess the crop using the given attributes.',
+              'The collections page, where users can see possible crops and their info.',
             ],
           })}
         />
@@ -116,14 +121,24 @@ export default function BulletinBoard() {
               '/assets/screenshots/mediline/mediline7.png',
               '/assets/screenshots/mediline/mediline8.png',
             ],
+            captions: [
+              'Mediline\'s landing page, where a user can see what services are provided.',
+              'Users can sign in with their account info, or sign up as needed.',
+              'Patients can check on their doctors, appointments, invoices, and more.',
+              'Patients can submit surverys and see their progress visualized.',
+              'Pharmacists can check on stock, payments, and incoming prescriptions.',
+              'Doctors can view their schedules and see patient information.',
+              'Patients and doctors can have live chats during appointments.',
+              'Users can use the discussion forum to share their healthcare routines.',
+            ],
           })}
         />
       </div>
 
       {/* skills */}
-      <div className="absolute top-[38%] left-[78%] w-full h-full pointer-events-none">
+      <div className="absolute top-[38%] left-[77%] w-full h-full pointer-events-none">
         <img
-          className='absolute top-[-2%] left-[0%] -translate-x-1/2 z-10 scale-40'
+          className='absolute top-[1%] left-[-2%] -translate-x-1/2 z-10 h-[4%]'
           src='/assets/titles/skills.png'
           alt='Skills'
         />
@@ -312,9 +327,9 @@ export default function BulletinBoard() {
       </div>
 
       { /* certificates */}
-      <div className="absolute top-[62%] left-[51%] w-full h-full pointer-events-none">
+      <div className="absolute top-[62%] left-[48%] w-full h-full pointer-events-none">
         <img
-          className='absolute top-[0%] left-[0%] -translate-x-1/2 z-10 scale-40'
+          className='absolute top-[4%] left-[0%] -translate-x-1/2 z-10 h-[5%]'
           src='/assets/titles/certificates.png'
           alt='Certificates'
         />
@@ -337,9 +352,9 @@ export default function BulletinBoard() {
       </div>
 
       {/* postits */}
-      <div className="absolute top-[22%] left-[7%] w-full h-full pointer-events-none">
+      <div className="absolute top-[22%] left-[8%] w-full h-full pointer-events-none">
         <img
-          className='absolute top-[-10%] left-[7%] -translate-x-1/2 z-10 scale-40'
+          className='absolute top-[-7%] left-[7%] -translate-x-1/2 z-10 h-[4%]'
           src='/assets/titles/links.png'
           alt='Links'
         />
@@ -381,6 +396,19 @@ export default function BulletinBoard() {
           onClick={() => window.open("https://github.com/osid54", "_blank")}
           onHoverChange={handleHoverChange}
         />
+        <PaperCard
+          src="/assets/postits/postit3.png"
+          alt="Email Me"
+          top="17%"
+          left="8%"
+          type="postit"
+          logo="/assets/logos/email.png"
+          hue={-280}
+          rot={10}
+          logoOffsetX={3}
+          onClick={() => window.location.href = 'mailto:2004.osid54@gmail.com'}
+          onHoverChange={handleHoverChange}
+        />
       </div>
 
       {/* papers */}
@@ -394,7 +422,11 @@ export default function BulletinBoard() {
           rot={-5}
           onHoverChange={handleHoverChange}
           onClick={() => openPDFModal({
-            pdfSrc: '/assets/aboutme.pdf',
+            pdfSrc: '/assets/pdfs/Omar-Siddiqui-About-Me.pdf',
+            downloadFileName: 'Omar-Siddiqui-About-Me.pdf',
+            imageUrl: "/assets/pdfs/aboutme.jpg",
+            bgUrl: "paper4",
+            downloadLabel: "About Me"
           })}
         />
         <PaperCard
@@ -406,13 +438,27 @@ export default function BulletinBoard() {
           rot={3}
           onHoverChange={handleHoverChange}
           onClick={() => openPDFModal({
+            pdfSrc: '/assets/pdfs/Omar-Siddiqui-Resume.pdf',
             downloadFileName: 'Omar-Siddiqui-Resume.pdf',
-            imageUrl: '/assets/pdfs/resume.png',
+            imageUrl: "/assets/pdfs/resume.jpg",
+            bgUrl: "paper3",
+            downloadLabel: "Resume"
           })}
         />
       </div>
 
       {/* stickers */}
+      <PaperCard
+        src="/assets/stickers/stickerNJIT.png"
+        alt="New Jersey Institute of Technology"
+        top="13%"
+        left="77%"
+        type='sticker'
+        size="lg"
+        rot={-8}
+        onHoverChange={handleHoverChange}
+      />
+      {/*
       <PaperCard
         src="/assets/stickers/stickerNJIT.png"
         alt="New Jersey Institute of Technology"
@@ -467,36 +513,37 @@ export default function BulletinBoard() {
           rot={-5}
         />
       </div>
+      */}
 
       {/* pins */}
-      <div className="absolute top-[81%] left-[34%] w-full h-full pointer-events-none">
+      <div className="absolute top-[81%] left-[31%] w-full h-full pointer-events-none">
         <img
-          className='absolute top-[0%] left-[00%] z-10 h-6 w-8'
+          className='absolute top-[0%] left-[00%] z-10 h-[4%]'
           src='/assets/pins/pin1.png'
           alt='Red Pin'
           style={{ filter: 'hue-rotate(0deg)' }}
         />
         <img
-          className='absolute top-[-2%] left-[4%] z-10 h-6 w-8'
+          className='absolute top-[-2%] left-[4%] z-10 h-[4%]'
           src='/assets/pins/pin1.png'
           alt='Blue Pin'
           style={{ filter: 'hue-rotate(200deg)' }}
         />
         <img
-          className='absolute top-[3%] left-[3%] z-10 h-6 w-8'
+          className='absolute top-[3%] left-[3%] z-10 h-[4%]'
           src='/assets/pins/pin1.png'
           alt='Green Pin'
           style={{ filter: 'hue-rotate(110deg)' }}
         />
       </div>
       <img
-        className='absolute top-[33%] left-[90%] z-10 h-6 w-8'
+        className='absolute top-[33%] left-[90%] z-10 h-[4%]'
         src='/assets/pins/pin1.png'
         alt='Red Pin'
         style={{ filter: 'hue-rotate(0deg)' }}
       />
       <img
-        className='absolute top-[15.5%] left-[6%] z-10 h-6 w-8'
+        className='absolute top-[12%] left-[7%] z-10 h-[4%]'
         src='/assets/pins/pin1.png'
         alt='Blue Pin'
         style={{ filter: 'hue-rotate(200deg)' }}
@@ -511,6 +558,7 @@ export default function BulletinBoard() {
           linkHref={activeGalleryModal.linkHref}
           textContent={activeGalleryModal.textContent}
           galleryImages={activeGalleryModal.galleryImages}
+          captions={activeGalleryModal.captions}
         />
       )}
       {activePDFModal && (
@@ -519,6 +567,9 @@ export default function BulletinBoard() {
           onClose={closePDFModal}
           pdfSrc={activePDFModal.pdfSrc}
           downloadFileName={activePDFModal.downloadFileName}
+          imageUrl={activePDFModal.imageUrl}
+          bgUrl={activePDFModal.bgUrl}
+          downloadLabel={activePDFModal.downloadLabel}
         />
       )}
 

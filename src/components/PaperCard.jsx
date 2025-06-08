@@ -133,8 +133,8 @@ export default function PaperCard({
         <img
           src={logo}
           alt={`${alt} logo`}
-          className={`absolute top-[50%] -translate-x-1/2 -translate-y-1/2 h-auto object-contain z-20 opacity-${logoOpacity}`}
-          style={{ width: `${logoSize}%`, left: `${50 + logoOffsetX}%` }}
+          className={`absolute top-[50%] -translate-x-1/2 -translate-y-1/2 h-auto object-contain z-20`}
+          style={{ width: `${logoSize}%`, left: `${50 + logoOffsetX}%`, opacity: `${logoOpacity/100}` }}
           draggable="false"
         />
       )}

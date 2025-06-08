@@ -7,13 +7,13 @@ export default function Home() {
       style={{ backgroundImage: "url('/assets/brickWall.jpg')" }}
     >
       <img
-        className='absolute top-0 left-[90%] z-10 drop-shadow-2xl shadow-black'
+        className='absolute left-[90%] z-10 drop-shadow-2xl shadow-black w-[25%]'
         src='/assets/leaves/leaves1.png'
         alt='leaves'
       />
       <BulletinBoard />
       <img
-        className='absolute top-0 left-[-17%] z-10 drop-shadow-2xl shadow-black'
+        className='absolute left-[-17%] z-10 drop-shadow-2xl shadow-black w-[25%]'
         src='/assets/leaves/leaves1.png'
         alt='leaves'
       />
