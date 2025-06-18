@@ -7,7 +7,7 @@ I aim to create impactful software that bridges design, functionality, and probl
 
 ##  Live Site
 
-[https://www.osid.dev](www.osid.dev)  
+[www.osid.dev](https://www.osid.dev)  
 (Currently deployed via Vercel)
 
 ## Screenshots
