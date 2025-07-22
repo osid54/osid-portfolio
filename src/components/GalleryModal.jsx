@@ -3,66 +3,12 @@ import React, { useState, useRef, useEffect } from 'react';
 const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galleryImages, captions }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [prevIndex, setPrevIndex] = useState(0);
-    const [edgeColors, setEdgeColors] = useState({
-        center: { top: '#000', bottom: '#000' },
-        left: { top: '#000', bottom: '#000' },
-        right: { top: '#000', bottom: '#000' },
-    });
     const [fade, setFade] = useState(false);
     const [maxImageHeight, setMaxImageHeight] = useState(null);
 
     const centerRef = useRef();
     const leftRef = useRef();
     const rightRef = useRef();
-
-    const getEdgeColor = (img) => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        ctx.drawImage(img, 0, 0);
-
-        const middleX = Math.floor(img.naturalWidth / 2);
-        const topPixel = ctx.getImageData(middleX, 0, 1, 1).data;
-        const bottomPixel = ctx.getImageData(middleX, img.naturalHeight - 1, 1, 1).data;
-
-        return {
-            top: `rgb(${topPixel[0]}, ${topPixel[1]}, ${topPixel[2]})`,
-            bottom: `rgb(${bottomPixel[0]}, ${bottomPixel[1]}, ${bottomPixel[2]})`,
-        };
-    };
-
-    useEffect(() => {
-        const updateColors = () => {
-            try {
-                const centerColor = getEdgeColor(centerRef.current);
-                const leftColor = getEdgeColor(leftRef.current);
-                const rightColor = getEdgeColor(rightRef.current);
-                setEdgeColors({ center: centerColor, left: leftColor, right: rightColor });
-            } catch (err) {
-                console.error('Error extracting edge colors', err);
-            }
-        };
-
-        const allLoaded =
-            centerRef.current?.complete &&
-            leftRef.current?.complete &&
-            rightRef.current?.complete;
-
-        if (allLoaded) updateColors();
-        else {
-            const handleLoad = () => updateColors();
-            centerRef.current?.addEventListener('load', handleLoad);
-            leftRef.current?.addEventListener('load', handleLoad);
-            rightRef.current?.addEventListener('load', handleLoad);
-
-            return () => {
-                centerRef.current?.removeEventListener('load', handleLoad);
-                leftRef.current?.removeEventListener('load', handleLoad);
-                rightRef.current?.removeEventListener('load', handleLoad);
-            };
-        }
-    }, [currentImageIndex]);
 
     useEffect(() => {
         const preloadImages = async () => {
@@ -135,31 +81,31 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                 </button>
 
                 <div
-                    className="flex flex-grow-0 h-[30vh] mb-4 rounded-xl items-center"
+                    className="flex flex-grow-0 h-[30vh] mb-4 rounded-xl items-center gap-5"
                     style={{ backgroundColor: 'rgba(255,255,255,0.5)', backgroundBlendMode: 'overlay' }}
                 >
                     <div className="flex justify-center items-center h-[90%] w-1/2 mx-auto">
                         <div className="flex flex-col w-full gap-4">
-                            <div className="h-1/2">
-                                <img src={imageSrc} alt="Modal Content" className="w-full h-full object-contain" />
+                            <div className="h-1/2 justify-items-center">
+                                <img src={imageSrc} alt="Modal Content" className="h-full object-contain" />
                             </div>
                             <div
                                 className="h-1/2 flex items-center justify-center rounded-md text-4xl font-semibold text-center"
                                 style={{ fontFamily: 'Architex' }}
                             >
                                 <a
-                                    href={linkHref}
+                                    href={"https://www." + linkHref + "/"}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-blue-600 hover:text-blue-500 hover:underline break-all"
                                 >
-                                    {linkHref}
+                                    {"https://www."+linkHref+"/"}
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div
-                        className="w-[45%] flex flex-col items-center justify-center text-gray-800 text-2xl font-semibold"
+                        className="w-[45%] flex flex-col items-center justify-center text-gray-800 text-4xl font-semibold"
                         style={{ fontFamily: 'Architex' }}
                     >
                         <div className="overflow-y-auto max-h-[28vh] px-2">
@@ -179,7 +125,7 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                     <div
                         className="absolute left-0 w-1/4 z-0 transform translate-x-1/4 rounded-lg shadow-lg transition-all duration-500 border-2 border-white"
                         style={{
-                            background: `linear-gradient(to bottom, ${edgeColors.left.top}, ${edgeColors.left.bottom})`,
+                            background: "white",
                         }}
                     >
                         <img
@@ -197,7 +143,7 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                     <div
                         className="w-2/3 max-h-full rounded-lg flex flex-col items-center justify-start z-10 shadow-lg transition-all duration-500 border-4 overflow-hidden"
                         style={{
-                            background: `linear-gradient(to bottom, ${edgeColors.center.top}, ${edgeColors.center.bottom})`,
+                            background: "white",
                         }}
                     >
                         <div className="flex-1 w-full flex items-center justify-center">
@@ -209,8 +155,8 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                             />
                         </div>
                         <div
-                            className="w-full text-center text-black px-4 py-2 max-h-[20%] text-xl font-medium"
-                            style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', fontFamily: 'Architex' }}
+                            className="w-full text-center text-black px-4 py-2 max-h-[20%] text-3xl font-medium"
+                            style={{ backgroundColor: 'rgba(255, 255, 255, 1)', fontFamily: 'Architex' }}
                         >
                             <span style={{ position: 'relative', top: '5px' }}>({currentImageIndex+1}/{galleryImages.length}) {captions[currentImageIndex]}</span>
                         </div>
@@ -219,7 +165,7 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                     <div
                         className="absolute right-0 w-1/4 z-0 transform -translate-x-1/4 rounded-lg shadow-lg transition-all duration-500 border-2"
                         style={{
-                            background: `linear-gradient(to bottom, ${edgeColors.right.top}, ${edgeColors.right.bottom})`,
+                            background: "white",
                         }}
                     >
                         <img

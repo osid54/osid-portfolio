@@ -54,7 +54,7 @@ export default function BulletinBoard() {
 
   return (
     <div
-      className="relative w-[95vw] max-w-5xl aspect-[208/125] bg-center bg-cover rounded-3xl shadow-2xl shadow-black overflow-hidden"
+      className="relative w-[75vw] aspect-[208/125] bg-center bg-cover rounded-3xl shadow-2xl shadow-black overflow-hidden"
       style={{ backgroundImage: "url('/assets/bulletinFinal.png')" }}
     >
       {/* title */}
@@ -65,30 +65,29 @@ export default function BulletinBoard() {
       />
 
       {/* projects */}
-      <div className="absolute top-[52%] left-[18%] w-full h-full pointer-events-none">
+      <div className="absolute top-[54%] left-[18%] w-full h-full pointer-events-none">
         <img
-          className='absolute top-[3%] left-[0%] -translate-x-1/2 z-10 h-[5%]'
+          className='absolute top-[2%] left-[0%] -translate-x-1/2 z-10 h-[5%]'
           src='/assets/titles/projects.png'
           alt='Projects'
         />
         <PaperCard
           src="/assets/logos/stardewdleTitle.png"
           alt="stardewdle.com"
-          top="11%"
+          top="10%"
           left="-13%"
           type="paper"
           size='lg'
           rot={-4}
           onHoverChange={handleHoverChange}
-          //onClick={() => window.open("https://stardewdle.com/", "_blank")}
           onClick={() => openGalleryModal({
             imageSrc: "/assets/logos/stardewdleTitle.png",
-            linkHref: "https://stardewdle.com/",
+            linkHref: "stardewdle.com",
             textContent: "A Wordle-like game based on crops from the hit game Stardew Valley. Its frontend is built in React and hosted through AWS Amplify, and its backend is serverless through AWS Lambda, API Gateway, S3, and DynamoDB.",
             galleryImages: [
               '/assets/screenshots/stardewdle/stardewdle1.png',
-              '/assets/screenshots/stardewdle/stardewdle2.png',
               '/assets/screenshots/stardewdle/stardewdle3.png',
+              '/assets/screenshots/stardewdle/stardewdle2.png',
             ],
             captions: [
               'The landing page, where the user can navigate to either page.',
@@ -98,18 +97,42 @@ export default function BulletinBoard() {
           })}
         />
         <PaperCard
+          src="/assets/logos/teacherspetLogo.png"
+          alt="teachers-pet.site"
+          top="11%"
+          left="6%"
+          type="paper"
+          size='sm'
+          rot={8}
+          onHoverChange={handleHoverChange}
+          onClick={() => openGalleryModal({
+            imageSrc: "/assets/logos/teacherspetLogo.png",
+            linkHref: "teachers-pet.site",
+            textContent: "A math-based worksheet generator that allows you to customize, save, and share your own worksheets based on an array of subjects. The frontend is built on a Next.js and React framework, hosted on Vercel. The backend is built with Python and FastAPI, hosted on Railway.",
+            galleryImages: [
+              '/assets/screenshots/teacherspet/teacherspet1.png',
+              '/assets/screenshots/teacherspet/teacherspet2.png',
+              '/assets/screenshots/teacherspet/teacherspet3.png',
+            ],
+            captions: [
+              'The generation page. Here you can select the subjects you wish to include in your worksheet and modify their settings.',
+              'Any and all users can see publically shared worksheet generation templates made and shared by users.',
+              'Creating an account allows you to create, save, and share your own worksheet templates.'
+            ],
+          })}
+        />
+        <PaperCard
           src="/assets/logos/medilineLogo.png"
           alt="mediline-njit.com"
-          top="21%"
-          left="-5%"
+          top="20%"
+          left="-11%"
           type="paper"
           size='lg'
           rot={3}
           onHoverChange={handleHoverChange}
-          //onClick={() => window.open("https://www.mediline-njit.com/", "_blank")}
           onClick={() => openGalleryModal({
             imageSrc: "/assets/logos/medilineLogo.png",
-            linkHref: "https://www.mediline-njit.com/",
+            linkHref: "mediline-njit.com",
             textContent: "A healthcare portal that allows patients, doctors, and pharmacists to interact and manage their data, interactions, appointments, prescriptions, invoices, and more, all through dynamic, role-based dashboards. Built upon React, Flask, and MySQL",
             galleryImages: [
               '/assets/screenshots/mediline/mediline1.png',
@@ -136,7 +159,7 @@ export default function BulletinBoard() {
       </div>
 
       {/* skills */}
-      <div className="absolute top-[38%] left-[77%] w-full h-full pointer-events-none">
+      <div className="absolute top-[30%] left-[77%] w-full h-full pointer-events-none">
         <img
           className='absolute top-[1%] left-[-2%] -translate-x-1/2 z-10 h-[4%]'
           src='/assets/titles/skills.png'
@@ -187,8 +210,8 @@ export default function BulletinBoard() {
           <PaperCard
             src="/assets/symbols/cpp.png"
             alt="C++"
-            top="9%"
-            left="9%"
+            top="19%"
+            left="0%"
             type='sticker'
             size="sm"
             rot={-8}
@@ -206,83 +229,123 @@ export default function BulletinBoard() {
           />
         </div>
         {/* platforms */}
-        <div className="absolute top-[3%] left-[6%] w-full h-full pointer-events-none">
+        <div className="absolute top-[9%] left-[4%] w-full h-full pointer-events-none">
           <PaperCard
             src="/assets/symbols/aws.png"
             alt="AWS"
-            top="0%"
-            left="0%"
+            top="3%"
+            left="5%"
             type='sticker'
             size="sm"
-            rot={-11}
-            onHoverChange={handleHoverChange}
-          />
-          <PaperCard
-            src="/assets/symbols/mysql.png"
-            alt="MySQL"
-            top="2%"
-            left="6%"
-            type='sticker'
-            size="sm"
-            rot={12}
+            rot={11}
             onHoverChange={handleHoverChange}
           />
           <PaperCard
             src="/assets/symbols/gcp.png"
             alt="GCP"
             top="9%"
-            left="2%"
+            left="1%"
             type='sticker'
             size="sm"
             rot={-4}
             onHoverChange={handleHoverChange}
           />
+          <PaperCard
+            src="/assets/symbols/railway.png"
+            alt="Railway"
+            top="12%"
+            left="7%"
+            type='sticker'
+            size="sm"
+            rot={12}
+            onHoverChange={handleHoverChange}
+          />
+          <PaperCard
+            src="/assets/symbols/vercel.png"
+            alt="Vercel"
+            top="17%"
+            left="2.5%"
+            type='sticker'
+            size="sm"
+            rot={-8}
+            onHoverChange={handleHoverChange}
+          />
         </div>
         {/* webdev */}
-        <div className="absolute top-[29%] left-[6%] w-full h-full pointer-events-none">
+        <div className="absolute top-[44%] left-[7%] w-full h-full pointer-events-none">
+          <PaperCard
+            src="/assets/symbols/mysql.png"
+            alt="MySQL"
+            top="-1%"
+            left="-5%"
+            type='sticker'
+            size="sm"
+            rot={2}
+            onHoverChange={handleHoverChange}
+          />
+          <PaperCard
+            src="/assets/symbols/postgresql.png"
+            alt="PostgreSQL"
+            top="9%"
+            left="-5.5%"
+            type='sticker'
+            size="sm"
+            rot={-9}
+            onHoverChange={handleHoverChange}
+          />
           <PaperCard
             src="/assets/symbols/react.png"
             alt="React"
-            top="0%"
+            top="-3%"
             left=".5%"
             type='sticker'
             size="sm"
-            rot={-6}
+            rot={6}
             onHoverChange={handleHoverChange}
           />
           <PaperCard
             src="/assets/symbols/flask.png"
             alt="Flask"
-            top="2%"
+            top="0%"
             left="6%"
             type='sticker'
             size="sm"
-            rot={0}
+            rot={-10}
             onHoverChange={handleHoverChange}
           />
           <PaperCard
             src="/assets/symbols/css.png"
             alt="CSS"
-            top="9%"
+            top="7%"
             left="0%"
             type='sticker'
             size="sm"
-            rot={-4}
+            rot={-8}
             onHoverChange={handleHoverChange}
           />
           <PaperCard
             src="/assets/symbols/html.png"
             alt="HTML"
-            top="11%"
+            top="8%"
             left="5%"
             type='sticker'
             size="sm"
-            rot={15}
+            rot={5}
+            onHoverChange={handleHoverChange}
+          />
+          <PaperCard
+            src="/assets/symbols/fastapi.png"
+            alt="FastAPI"
+            top="-8.5%"
+            left="5.5%"
+            type='sticker'
+            size="sm"
+            rot={7}
             onHoverChange={handleHoverChange}
           />
         </div>
         {/* tools */}
-        <div className="absolute top-[34%] left-[-16%] w-full h-full pointer-events-none">
+        <div className="absolute top-[42%] left-[-16%] w-full h-full pointer-events-none">
           <PaperCard
             src="/assets/symbols/figma.png"
             alt="Figma"
@@ -352,9 +415,9 @@ export default function BulletinBoard() {
       </div>
 
       {/* postits */}
-      <div className="absolute top-[22%] left-[8%] w-full h-full pointer-events-none">
+      <div className="absolute top-[22%] left-[9%] w-full h-full pointer-events-none">
         <img
-          className='absolute top-[-7%] left-[7%] -translate-x-1/2 z-10 h-[4%]'
+          className='absolute top-[-7%] left-[6%] -translate-x-1/2 z-10 h-[4%]'
           src='/assets/titles/links.png'
           alt='Links'
         />
@@ -388,7 +451,7 @@ export default function BulletinBoard() {
           src="/assets/postits/postit3.png"
           alt="github.com"
           top="0%"
-          left="-.5%"
+          left="-.25%"
           type="postit"
           logo="/assets/logos/githubLogo.png"
           rot={8}
@@ -400,7 +463,7 @@ export default function BulletinBoard() {
           src="/assets/postits/postit3.png"
           alt="Email Me"
           top="17%"
-          left="8%"
+          left="7%"
           type="postit"
           logo="/assets/logos/email.png"
           hue={-280}
@@ -412,7 +475,7 @@ export default function BulletinBoard() {
       </div>
 
       {/* papers */}
-      <div className="absolute top-[23%] left-[32%] w-full h-full pointer-events-none">
+      <div className="absolute top-[24%] left-[32%] w-full h-full pointer-events-none">
         <PaperCard
           src="/assets/papers/aboutme.jpg"
           alt="About Me"
@@ -451,11 +514,21 @@ export default function BulletinBoard() {
       <PaperCard
         src="/assets/stickers/stickerNJIT.png"
         alt="New Jersey Institute of Technology"
-        top="13%"
-        left="77%"
+        top="11%"
+        left="76%"
         type='sticker'
         size="lg"
         rot={-8}
+        onHoverChange={handleHoverChange}
+      />
+      <PaperCard
+        src="/assets/stickers/menteeGo.png"
+        alt="MenteeGo Education"
+        top="10%"
+        left="87%"
+        type='sticker'
+        size="sm"
+        rot={6}
         onHoverChange={handleHoverChange}
       />
       {/*
@@ -547,6 +620,12 @@ export default function BulletinBoard() {
         src='/assets/pins/pin1.png'
         alt='Blue Pin'
         style={{ filter: 'hue-rotate(200deg)' }}
+      />
+      <img
+        className='absolute top-[9%] left-[84%] z-10 h-[4%]'
+        src='/assets/pins/pin1.png'
+        alt='Green Pin'
+        style={{ filter: 'hue-rotate(110deg)' }}
       />
 
       {/* Modals */}

@@ -46,7 +46,7 @@ const PDFModal = ({ isOpen, onClose, pdfSrc, imageUrl, downloadFileName, bgUrl, 
               style={{ fontFamily: 'Architex', backgroundBlendMode: 'overlay' }}
             >
               <span 
-              style={{ position: 'relative', top: '5px' }}>
+                style={{ position: 'relative', top: '5px' }}>
                 Download {downloadLabel}
               </span>
             </a>
