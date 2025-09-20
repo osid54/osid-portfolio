@@ -108,7 +108,7 @@ export default function BulletinBoard() {
           onClick={() => openGalleryModal({
             imageSrc: "/assets/logos/teacherspetLogo.png",
             linkHref: "teachers-pet.site",
-            textContent: "A math-based worksheet generator that allows you to customize, save, and share your own worksheets based on an array of subjects. The frontend is built on a Next.js and React framework, hosted on Vercel. The backend is built with Python and FastAPI, hosted on Railway.",
+            textContent: "A math-based worksheet generator that allows you to customize, save, and share your own worksheets based on an array of subjects. The frontend is built on a Next.js and React framework, hosted on Vercel. The backend is built with Python, PostgreSQL, and FastAPI, hosted on Railway.",
             galleryImages: [
               '/assets/screenshots/teacherspet/teacherspet1.png',
               '/assets/screenshots/teacherspet/teacherspet2.png',
@@ -133,7 +133,7 @@ export default function BulletinBoard() {
           onClick={() => openGalleryModal({
             imageSrc: "/assets/logos/medilineLogo.png",
             linkHref: "mediline-njit.com",
-            textContent: "A healthcare portal that allows patients, doctors, and pharmacists to interact and manage their data, interactions, appointments, prescriptions, invoices, and more, all through dynamic, role-based dashboards. Built upon React, Flask, and MySQL",
+            textContent: "A healthcare portal that allows patients, doctors, and pharmacists to interact and manage their data, interactions, appointments, prescriptions, invoices, and more, all through dynamic, role-based dashboards. Built upon React, Flask, and MySQL.",
             galleryImages: [
               '/assets/screenshots/mediline/mediline1.png',
               '/assets/screenshots/mediline/mediline2.png',
