@@ -81,11 +81,11 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                 </button>
 
                 <div
-                    className="flex flex-grow-0 h-[30vh] mb-4 rounded-xl items-center gap-5"
+                    className="flex flex-grow-0 h-[30vh] mb-4 rounded-xl items-center gap-[2%]"
                     style={{ backgroundColor: 'rgba(255,255,255,0.5)', backgroundBlendMode: 'overlay' }}
                 >
-                    <div className="flex justify-center items-center h-[90%] w-1/2 mx-auto">
-                        <div className="flex flex-col w-full gap-4">
+                    <div className="flex justify-center items-center h-[90%] w-[45%] mx-auto">
+                        <div className="flex flex-col w-[95%] gap-4">
                             <div className="h-1/2 justify-items-center">
                                 <img src={imageSrc} alt="Modal Content" className="h-full object-contain" />
                             </div>
@@ -105,7 +105,7 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                         </div>
                     </div>
                     <div
-                        className="w-[45%] flex flex-col items-center justify-center text-gray-800 text-4xl font-semibold"
+                        className="w-[50%] flex flex-col items-center justify-center text-gray-800 text-4xl font-semibold"
                         style={{ fontFamily: 'Architex' }}
                     >
                         <div className="overflow-y-auto max-h-[28vh] px-2">

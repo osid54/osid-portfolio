@@ -33,7 +33,7 @@ export default function PaperCard({
   logoOffsetX = 0, // logo offset X from 50, default is 0
   logoOpacity = 70, // logo opacity, default is 70
   onClick = null, // on click function
-  onHoverChange = null, // New prop: callback for hover state change
+  onHoverChange = null, // determines if hover causes glow/grow
 }) {
   const isSticker = type === 'sticker';
   const isPaper = type === 'paper';
