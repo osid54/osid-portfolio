@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { GoScreenFull, GoScreenNormal, GoArrowRight, GoArrowLeft } from 'react-icons/go';
 
 const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galleryImages, captions }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [prevIndex, setPrevIndex] = useState(0);
     const [fade, setFade] = useState(false);
     const [maxImageHeight, setMaxImageHeight] = useState(null);
+    const [fullscreen, setFullscreen] = useState(false);
 
     const centerRef = useRef();
     const leftRef = useRef();
@@ -35,7 +37,8 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
         const handleKeyDown = (e) => {
             if (e.key === 'ArrowLeft') handlePrevImage();
             else if (e.key === 'ArrowRight') handleNextImage();
-            else if (e.key === 'Escape') onClose();
+            else if (e.key === 'Escape') fullscreen ? toggleFullscreen() : onClose();
+            else if (e.key === 'f') toggleFullscreen();
         };
 
         window.addEventListener('keydown', handleKeyDown);
@@ -62,11 +65,15 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
         }, 300);
     };
 
+    const toggleFullscreen = () => {
+        setFullscreen(!fullscreen);
+    };
+
     return (
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center"
+            className="fixed inset-0 z-30 flex items-center justify-center"
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
-            onClick={onClose}
+            onClick={!fullscreen ? onClose : null}
         >
             <div
                 className="p-4 rounded-xl shadow-lg w-[60%] relative flex flex-col"
@@ -99,7 +106,7 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                                     rel="noopener noreferrer"
                                     className="text-blue-600 hover:text-blue-500 hover:underline break-all"
                                 >
-                                    {"https://www."+linkHref+"/"}
+                                    {"https://www." + linkHref + "/"}
                                 </a>
                             </div>
                         </div>
@@ -114,19 +121,16 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                     </div>
                 </div>
                 <br />
-                <div className="flex items-center justify-center relative overflow-hidden transition-colors duration-500">
+                <div className="flex items-center justify-center relative overflow-hidden transition-colors duration-300 ease-in">
                     <button
                         onClick={handlePrevImage}
-                        className="absolute bg-gray-400 rounded-full z-20 h-[20%] w-[4%] left-[1%] font-extrabold hover:bg-gray-300 cursor-pointer"
+                        className="absolute z-20 h-[15%] w-[10%] left-[4%] bottom-[4%] cursor-pointer items-center justify-center flex"
                     >
-                        &lt;
+                        <GoArrowLeft className='rounded-full h-[90%] w-[90%] hover:h-full hover:w-full text-white bg-gray-500/50' />
                     </button>
 
                     <div
-                        className="absolute left-0 w-1/4 z-0 transform translate-x-1/4 rounded-lg shadow-lg transition-all duration-500 border-2 border-white"
-                        style={{
-                            background: "white",
-                        }}
+                        className="absolute left-0 w-1/3 z-0 transform translate-x-1/8 rounded-lg shadow-lg transition-all duration-300 ease-in border-2 border-white bg-white"
                     >
                         <img
                             ref={leftRef}
@@ -136,37 +140,37 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                                     : galleryImages[galleryImages.length - 1]
                             }
                             alt="Left preview"
-                            className={`max-h-full max-w-full object-contain transition-opacity duration-500 ${fade ? 'opacity-0' : 'opacity-100'} rounded-lg`}
+                            className={`max-h-full max-w-full object-contain transition-opacity duration-300 ease-in ${fade ? 'opacity-0' : 'opacity-100'} rounded-lg`}
                         />
                     </div>
 
                     <div
-                        className="w-2/3 max-h-full rounded-lg flex flex-col items-center justify-start z-10 shadow-lg transition-all duration-500 border-4 overflow-hidden"
-                        style={{
-                            background: "white",
-                        }}
+                        className="w-2/3 max-h-full rounded-lg flex flex-col items-center justify-start z-10 shadow-lg transition-all duration-300 ease-in border-4 overflow-hidden bg-white"
                     >
                         <div className="flex-1 w-full flex items-center justify-center">
+                            <button
+                                onClick={toggleFullscreen}
+                                className="absolute cursor-pointer z-20 h-12 w-12 right-[17.5%] top-[2%] items-center justify-center flex"
+                            >
+                                <GoScreenFull className='rounded-lg h-[90%] w-[90%] hover:h-full hover:w-full text-white hover:opacity-50 bg-gray-500/50' />
+                            </button>
                             <img
                                 ref={centerRef}
                                 src={galleryImages[currentImageIndex]}
                                 alt={`Gallery Image ${currentImageIndex + 1}`}
-                                className={`max-h-full max-w-full object-contain transition-opacity duration-500 ${fade ? 'opacity-0' : 'opacity-100'}`}
+                                className={`max-h-full max-w-full object-contain transition-opacity duration-300 ease-in ${fade ? 'opacity-0' : 'opacity-100'}`}
                             />
                         </div>
                         <div
                             className="w-full text-center text-black px-4 py-2 max-h-[20%] text-3xl font-medium"
                             style={{ backgroundColor: 'rgba(255, 255, 255, 1)', fontFamily: 'Architex' }}
                         >
-                            <span style={{ position: 'relative', top: '5px' }}>({currentImageIndex+1}/{galleryImages.length}) {captions[currentImageIndex]}</span>
+                            <span style={{ position: 'relative', top: '5px' }}>({currentImageIndex + 1}/{galleryImages.length}) {captions[currentImageIndex]}</span>
                         </div>
                     </div>
 
                     <div
-                        className="absolute right-0 w-1/4 z-0 transform -translate-x-1/4 rounded-lg shadow-lg transition-all duration-500 border-2"
-                        style={{
-                            background: "white",
-                        }}
+                        className="absolute right-0 w-1/3 z-0 transform -translate-x-1/8 rounded-lg shadow-lg transition-all duration-300 ease-in border-2 bg-white"
                     >
                         <img
                             ref={rightRef}
@@ -176,18 +180,48 @@ const GalleryModal = ({ isOpen, onClose, imageSrc, linkHref, textContent, galler
                                     : galleryImages[0]
                             }
                             alt="Right preview"
-                            className={`max-h-full max-w-full object-contain transition-opacity duration-500 ${fade ? 'opacity-0' : 'opacity-100'} rounded-lg`}
+                            className={`max-h-full max-w-full object-contain transition-opacity duration-300 ease-in ${fade ? 'opacity-0' : 'opacity-100'} rounded-lg`}
                         />
                     </div>
 
                     <button
                         onClick={handleNextImage}
-                        className="absolute bg-gray-400 rounded-full z-20 h-[20%] w-[4%] right-[1%] font-extrabold hover:bg-gray-300 cursor-pointer">
-                        &gt;
+                        className="absolute z-20 h-[15%] w-[10%] right-[4%] bottom-[4%] cursor-pointer items-center justify-center flex"
+                    >
+                        <GoArrowRight className='rounded-full h-[90%] w-[90%] hover:h-full hover:w-full text-white bg-gray-500/50' />
                     </button>
                 </div>
                 <br />
             </div>
+            {fullscreen &&
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center "
+                    style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
+                    onClick={toggleFullscreen}
+                >
+                    <div
+                        className="absolute top-8 left-[2.5%] text-6xl rounded-xl bg-gray-500/50 p-3 h-20 w-20 text-center items-end justify-center flex"
+                        style={{ fontFamily: 'Architex' }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {currentImageIndex + 1}/{galleryImages.length}
+                    </div>
+                    <img
+                        ref={centerRef}
+                        src={galleryImages[currentImageIndex]}
+                        alt={`Gallery Image ${currentImageIndex + 1}`}
+                        className={`w-[80%] h-auto border-3 rounded-xl`}
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                    
+                    <button
+                        onClick={toggleFullscreen}
+                        className="absolute cursor-pointer z-20 h-20 w-20 right-[2.5%] top-8 items-center justify-center flex"
+                    >
+                        <GoScreenNormal className='rounded-xl h-[90%] w-[90%] hover:h-full hover:w-full text-white bg-gray-500/50' />
+                    </button>
+                </div>
+            }
         </div>
     );
 };
