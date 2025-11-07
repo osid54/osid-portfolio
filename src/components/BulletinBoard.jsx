@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PaperCard from './PaperCard';
 import GalleryModal from './GalleryModal';
 import PDFModal from './PDFModal';
+import { motion } from 'framer-motion';
 
 const Tooltip = ({ text, x, y, visible }) => {
   if (!visible) return null;
@@ -54,9 +55,19 @@ export default function BulletinBoard() {
 
   return (
     <div
-      className="relative w-[75vw] aspect-[208/125] bg-center bg-cover rounded-3xl shadow-2xl shadow-black overflow-hidden"
-      style={{ backgroundImage: "url('/assets/bulletinFinal.png')" }}
+      className="relative w-[75vw] aspect-[208/125]" // size of bulletin image
     >
+      {/* bulletin board */}
+      <motion.div>
+        <img
+          src={'/assets/bulletinFinal.png'}
+          alt={null}
+          className="w-full h-auto relative z-0"
+          style={{ filter: `drop-shadow(-10px 15px 10px rgba(0, 0, 0, .8))` }}
+          draggable="false"
+        />
+      </motion.div>
+
       {/* title */}
       <img
         className='absolute top-[8%] left-1/2 -translate-x-1/2 w-[40%] z-10'
@@ -166,7 +177,7 @@ export default function BulletinBoard() {
           alt='Skills'
         />
         {/* languages */}
-        <div className="absolute top-[9%] left-[-8%] w-full h-full pointer-events-none">
+        <div className="absolute top-[9%] left-[-10%] w-full h-full pointer-events-none">
           <PaperCard
             src="/assets/symbols/javascript.png"
             alt="JavaScript"
@@ -229,45 +240,55 @@ export default function BulletinBoard() {
           />
         </div>
         {/* platforms */}
-        <div className="absolute top-[9%] left-[4%] w-full h-full pointer-events-none">
+        <div className="absolute top-[12%] left-[4%] w-full h-full pointer-events-none">
           <PaperCard
             src="/assets/symbols/aws.png"
             alt="AWS"
-            top="3%"
-            left="5%"
+            top="-7%"
+            left="4%"
             type='sticker'
             size="sm"
-            rot={11}
+            rot={-3}
             onHoverChange={handleHoverChange}
           />
           <PaperCard
             src="/assets/symbols/gcp.png"
             alt="GCP"
-            top="9%"
-            left="1%"
+            top="0%"
+            left="0.5%"
             type='sticker'
             size="sm"
             rot={-4}
             onHoverChange={handleHoverChange}
           />
           <PaperCard
+            src="/assets/symbols/vercel.png"
+            alt="Vercel"
+            top="1%"
+            left="6%"
+            type='sticker'
+            size="sm"
+            rot={8}
+            onHoverChange={handleHoverChange}
+          />
+          <PaperCard
             src="/assets/symbols/railway.png"
             alt="Railway"
-            top="12%"
-            left="7%"
+            top="8%"
+            left="2.5%"
             type='sticker'
             size="sm"
             rot={12}
             onHoverChange={handleHoverChange}
           />
           <PaperCard
-            src="/assets/symbols/vercel.png"
-            alt="Vercel"
-            top="17%"
-            left="2.5%"
+            src="/assets/symbols/render.png"
+            alt="Render"
+            top="8%"
+            left="8%"
             type='sticker'
             size="sm"
-            rot={-8}
+            rot={-4}
             onHoverChange={handleHoverChange}
           />
         </div>
@@ -343,7 +364,18 @@ export default function BulletinBoard() {
             rot={7}
             onHoverChange={handleHoverChange}
           />
+          <PaperCard
+            src="/assets/symbols/expo.png"
+            alt="Expo"
+            top="-12%"
+            left=".5%"
+            type='sticker'
+            size="sm"
+            rot={-1}
+            onHoverChange={handleHoverChange}
+          />
         </div>
+        
         {/* tools */}
         <div className="absolute top-[42%] left-[-16%] w-full h-full pointer-events-none">
           <PaperCard
@@ -384,6 +416,16 @@ export default function BulletinBoard() {
             type='sticker'
             size="sm"
             rot={11}
+            onHoverChange={handleHoverChange}
+          />
+          <PaperCard
+            src="/assets/symbols/jira.png"
+            alt="Jira"
+            top="0%"
+            left="10.5%"
+            type='sticker'
+            size="sm"
+            rot={7}
             onHoverChange={handleHoverChange}
           />
         </div>
