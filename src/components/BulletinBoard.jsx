@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PaperCard from './PaperCard';
 import GalleryModal from './GalleryModal';
 import PDFModal from './PDFModal';
-import { motion } from 'framer-motion';
 
 const Tooltip = ({ text, x, y, visible }) => {
   if (!visible) return null;
@@ -55,10 +54,9 @@ export default function BulletinBoard() {
 
   return (
     <div
-      className="relative w-[75vw] aspect-[208/125]" // size of bulletin image
+      className="absolute w-[75vw] aspect-[208/125]" // size of bulletin image
     >
       {/* bulletin board */}
-      <motion.div>
         <img
           src={'/assets/bulletinFinal.png'}
           alt={null}
@@ -66,7 +64,6 @@ export default function BulletinBoard() {
           style={{ filter: `drop-shadow(-10px 15px 10px rgba(0, 0, 0, .8))` }}
           draggable="false"
         />
-      </motion.div>
 
       {/* title */}
       <img
@@ -172,12 +169,12 @@ export default function BulletinBoard() {
       {/* skills */}
       <div className="absolute top-[30%] left-[77%] w-full h-full pointer-events-none">
         <img
-          className='absolute top-[1%] left-[-2%] -translate-x-1/2 z-10 h-[4%]'
+          className='absolute top-[3%] left-[1%] -translate-x-1/2 z-10 h-[4%]'
           src='/assets/titles/skills.png'
           alt='Skills'
         />
         {/* languages */}
-        <div className="absolute top-[9%] left-[-10%] w-full h-full pointer-events-none">
+        <div className="absolute top-[9%] left-[-8%] w-full h-full pointer-events-none">
           <PaperCard
             src="/assets/symbols/javascript.png"
             alt="JavaScript"
@@ -431,12 +428,12 @@ export default function BulletinBoard() {
         </div>
       </div>
 
-      { /* certificates */}
+      { /* certifications */}
       <div className="absolute top-[62%] left-[48%] w-full h-full pointer-events-none">
         <img
           className='absolute top-[4%] left-[0%] -translate-x-1/2 z-10 h-[5%]'
-          src='/assets/titles/certificates.png'
-          alt='Certificates'
+          src='/assets/titles/certifications.png'
+          alt='Certifications'
         />
         <PaperCard
           src="/assets/postits/postit3.png"
