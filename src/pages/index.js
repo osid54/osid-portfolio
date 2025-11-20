@@ -1,36 +1,34 @@
 import BulletinBoard from '../components/BulletinBoard';
-import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
     <div
-      className="relative min-h-screen w-full bg-center bg-cover flex justify-center items-center overflow-hidden"
-      style={{ backgroundImage: "url('/assets/brickWall.jpg')" }}
+      className="relative w-full h-screen bg-center bg-cover flex justify-center items-center overflow-hidden"
+      style={{ backgroundImage: "url('/assets/brickWall.jpg')"}}
     >
-
-      <motion.div>
+      <div className='flex justify-start items-center h-full w-full'>
         <img
           src={'/assets/leaves/leaves1.png'}
           alt={null}
-          className='absolute left-[92%] top-[0%] z-10 h-[130%]'
+          className='relative -left-[34%] top-[5%] z-10 w-[50%] aspect-[181/495]'
           style={{ filter: `drop-shadow(-8px 12px 8px rgba(0, 0, 0, .8))` }}
           draggable="false"
         />
-      </motion.div>
+      </div>
 
       <BulletinBoard />
 
-      <motion.div>
+      <div className='flex justify-start items-center h-full w-full'>
         <img
           src={'/assets/leaves/leaves1.png'}
           alt={null}
-          className='absolute -left-[17%] top-[0%] z-10 h-[130%]'
+          className='relative left-[82%] top-[0%] z-10 w-[50%] aspect-[181/495]'
           style={{ filter: `drop-shadow(-8px 12px 8px rgba(0, 0, 0, .8))` }}
           draggable="false"
         />
-      </motion.div>
+      </div>
     </div>
   );
 }
 //<img className='absolute left-[-17%] z-10 drop-shadow-2xl shadow-black w-[25%]' src='/assets/leaves/leaves1.png' alt='leaves' />
-//<img className = 'absolute left-[90%] z-10 drop-shadow-2xl shadow-black w-[25%]' src='/assets/leaves/leaves1.png' alt='leaves' />
+//<img className = 'absolute left-[90%] z-10 drop-shadow-2xl shadow-black w-[25%]' src='/assets/leaves/leaves1.png' alt='leaves' /> 

@@ -24,7 +24,7 @@ const PDFModal = ({ isOpen, onClose, pdfSrc, imageUrl, downloadFileName, bgUrl, 
         </button>
 
         <div
-          className="flex-grow overflow-y-auto mb-4 flex flex-col rounded-lg text-center"
+          className="flex-grow overflow-y-auto mb-4 flex flex-col rounded-lg text-center scrollbar scrollbar-thumb-gray-500 scrollbar-track-transparent"
         >
           {imageUrl ? (
             <img
@@ -42,8 +42,8 @@ const PDFModal = ({ isOpen, onClose, pdfSrc, imageUrl, downloadFileName, bgUrl, 
             <a
               href={isPdfDownload ? pdfSrc : imageUrl}
               download={downloadFileName}
-              className="flex bg-gray-400 rounded-full hover:bg-gray-300 font-semibold text-3xl h-[80%] w-1/2 justify-center items-center text-center cursor-pointer"
-              style={{ fontFamily: 'Architex', backgroundBlendMode: 'overlay' }}
+              className="flex rounded-full bg-gray-500 hover:bg-gray-400 font-semibold text-3xl h-[80%] w-1/2 justify-center items-center text-center cursor-pointer"
+              style={{ fontFamily: 'Architex' }}
             >
               <span 
                 style={{ position: 'relative', top: '5px' }}>
