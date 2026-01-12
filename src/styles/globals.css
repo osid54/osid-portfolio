@@ -13,6 +13,9 @@
   --color-primary: hsl(220, 90%, 56%);
   --font-display: "Satoshi", "sans-serif";
   --spacing-large: 2rem;
+  --breakpoint-xxl: 90rem;
+  --breakpoint-xxxl: 119rem;
+  --breakpoint-4k: 160rem;
 }
 
 :root {

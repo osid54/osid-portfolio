@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "handwritten": ['Architex', 'sans-serif'], 
+        "handwritten": ['Architex', 'sans-serif'],
       },
     },
   },

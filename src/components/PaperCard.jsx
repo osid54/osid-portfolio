@@ -2,18 +2,21 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
 const STICKER_WIDTHS = {
+  xs: '3%',
   sm: '5%',
   md: '7%',
   lg: '11%',
 };
 
 const PAPER_WIDTHS = {
+  xs: '6%',
   sm: '8%',
   md: '13%',
   lg: '18%',
 };
 
 const POSTIT_WIDTHS = {
+  xs: '3%',
   sm: '5%',
   md: '7%',
   lg: '11%',
@@ -24,7 +27,7 @@ export default function PaperCard({
   alt,
   top,
   left,
-  size = 'md', // default is 'md' ('sm', 'md', 'lg')
+  size = 'md', // default is 'md' ('xs', 'sm', 'md', 'lg')
   type = 'sticker', // default is 'sticker' ('sticker', 'paper', 'postit')
   rot = 0, // initial rotation
   hue = null, // hue rotation in degrees
