@@ -7,7 +7,7 @@ export default function Document() {
         <meta name="description" content="Learn about Omar Siddiqui, aspiring software engineer." />
         <meta property="og:title" content="Omar Siddiqui's Portfolio" />
         <meta property="og:description" content="Learn about Omar Siddiqui, aspiring software engineer." />
-        <meta property="og:url" content="https://www.osid.dev" />
+        <meta property="og:url" content="https://www.osid.dev/" />
         <meta property="og:site_name" content="Omar Siddiqui" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.osid.dev/assets/osid-portfolio.png" />
