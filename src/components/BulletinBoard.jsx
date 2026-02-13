@@ -92,7 +92,7 @@ export default function BulletinBoard() {
             onClick={() => openGalleryModal({
               imageSrc: "/assets/logos/stardewdleLogo.png",
               linkHref: "stardewdle.com",
-              textContent: "Stardewdle is a Wordle-inspired game based on the hit game Stardew Valley. Every day, players have to guess the daily crop, narrowing down their guesses based on qualititave and quantitative information. The frontend is built in React and hosted through AWS Amplify, and the serverless backend is hosted through AWS Lambda, API Gateway, S3, and DynamoDB.",
+              textContent: "Stardewdle is a Wordle-inspired game based on the hit game Stardew Valley. Every day, players have to guess the daily crop, narrowing down their guesses based on qualitative and quantitative information. The frontend is built in React and hosted through AWS Amplify, and the serverless backend is hosted through AWS Lambda, API Gateway, S3, and DynamoDB.",
               galleryImages: [
                 '/assets/screenshots/stardewdle/stardewdle1.png',
                 '/assets/screenshots/stardewdle/stardewdle2.png',
@@ -102,9 +102,9 @@ export default function BulletinBoard() {
               ],
               captions: [
                 'Stardewdle\'s landing page, where users can navigate to either the game page or the collection page. They can also see the GitHub repository and game credits.',
-                'The collections page is where users can see all possible crops options, as well as their respective game information. This information was webscraped from the Stardew Valley Wiki.',
+                'The collections page is where users can see all possible crop options, as well as their respective game information. This information was webscraped from the Stardew Valley Wiki.',
                 'The game page is where users actually play the game. They try to guess the crop using the given attributes. There are also hints available, which narrow down possible guesses.',
-                'When a game is completed, users can see the time until the next daily crop is available, as well how many other people have played today. They can also share their results via the share button.',
+                'When a game is completed, users can see the time until the next daily crop is available, as well as how many other people have played today. They can also share their results via the share button.',
                 'In addition to the desktop version, Stardewdle is fully mobile responsive and playable on any mobile device.',
               ],
               dates: ['May 2025', 'January 2026'],
@@ -134,7 +134,7 @@ export default function BulletinBoard() {
               captions: [
                 'The main page of Teacher\'s Pet is the generation page. Here users can select the subjects they wish to include in their worksheet and modify their settings, allowing for mixed subjects and increased difficulty.',
                 'Any and all users can see and search for publically shared worksheet generation templates made by users. They can then use these templates to generate their own worksheets.',
-                'Creating an account allows users to create, save, and share their own worksheet templates. This also allows them to customizer publically shared templates and save them to their account for later use.',
+                'Creating an account allows users to create, save, and share their own worksheet templates. This also allows them to customize publically shared templates and save them to their account for later use.',
               ],
               dates: ['June 2025', 'September 2025'],
               githubLink: 'osid54/teachers-pet',
@@ -168,12 +168,12 @@ export default function BulletinBoard() {
               captions: [
                 'Mediline\'s landing page, where a user can see the services that are provided. They can also do a preliminary search for doctors who are with the service.',
                 'Users can sign in to view their dashboard with their account info or create an account if needed.',
-                'Patients have their own dashboard, where can check on their active doctors, upcoming appointments, invoice statuses, and more.',
+                'Patients have their own dashboard, where they can check on their active doctors, upcoming appointments, invoice statuses, and more.',
                 'Patients can view their account information, active prescriptions, exercise plans, and fill out forms and surveys sent by their doctors. They can also see their progress visualized through graphs.',
                 'Doctors also have their own dashboard, where they can view their schedule of appointments, view patient information, and assign medication, create exercise plans, and send invoices.',
                 'The final dashboard is for pharmacists, who can check on medication inventory, payment statuses, and incoming prescriptions to be accepted or rejected.',
                 'Mediline offers the ability to handle appointments between patients and doctors via live chat rooms.',
-                'There is also a discussion forum, where patients and doctors alike can share healthcare routines and comment on others\'s.',
+                'There is also a discussion forum, where patients and doctors alike can share healthcare routines and comment on others\'.',
               ],
               dates: ['February 2025', 'May 2025'],
               githubLink: 'RonSarcauga/CS_490_Mediline_Frontend',
@@ -206,7 +206,7 @@ export default function BulletinBoard() {
               captions: [
                 'ChefAsap\'s landing page, where a user can sign up to create an account and sign in to the app once an account is created.',
                 'Chefs have the ability to edit their schedules, displayed cuisines, and descriptions from their profile. They also have the ability to manage their menu, adding items section by section.',
-                'Customers have the ability to do a location based search for chefs in their area. There are many filters available, and they can view favorited and recent chefs as well.',
+                'Customers have the ability to do a location based search for chefs in their area. There are many filters available, and they can view favorite and recent chefs as well.',
                 'When a customer selects a chef, they can view their basic info, schedule, and menu. From the menu, they can add items to their cart and checkout, ending in a booking request to the chef.',
                 'Both chefs and customers alike can view their upcoming and past bookings in a calendar view as well as a detailed list view.',
                 'Customers also have the ability to chat with chefs in-app to discuss details about their bookings, like giving directions or asking for substitutions.',
