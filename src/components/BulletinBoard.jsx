@@ -524,7 +524,7 @@ export default function BulletinBoard() {
             hue={180}
             rot={-6}
             logoOffsetX={3}
-            onClick={() => window.open("https://www.linkedin.com/in/omar-siddiqui-34610132a", "_blank")}
+            onClick={() => window.open("https://www.linkedin.com/in/omar-siddiqui-6296363b0", "_blank")}
             onHoverChange={handleHoverChange}
           />
           <PaperCard
