@@ -92,7 +92,7 @@ export default function BulletinBoard() {
             onClick={() => openGalleryModal({
               imageSrc: "/assets/logos/stardewdleLogo.png",
               linkHref: "stardewdle.com",
-              textContent: "Stardewdle is a Wordle-inspired game based on the hit game Stardew Valley. Every day, players have to guess the daily crop, narrowing down their guesses based on qualitative and quantitative information. The frontend is built in React and hosted through AWS Amplify, and the serverless backend is hosted through AWS Lambda, API Gateway, S3, and DynamoDB.",
+              textContent: "Stardewdle is a Wordle-inspired game based on the hit game Stardew Valley. Every day, players have to guess the daily crop, narrowing down their guesses based on qualitative and quantitative information. The frontend is built in React and hosted through Vercel, and the serverless backend is hosted through AWS Lambda, API Gateway, and DynamoDB, as well as Cloudflare R2.",
               galleryImages: [
                 '/assets/screenshots/stardewdle/stardewdle1.png',
                 '/assets/screenshots/stardewdle/stardewdle2.png',
@@ -107,10 +107,10 @@ export default function BulletinBoard() {
                 'When a game is completed, users can see the time until the next daily crop is available, as well as how many other people have played today. They can also share their results via the share button.',
                 'In addition to the desktop version, Stardewdle is fully mobile responsive and playable on any mobile device.',
               ],
-              dates: ['May 2025', 'January 2026'],
+              dates: ['May 2025', 'March 2026'],
               githubLink: 'chrismarquezz/Stardewdle',
               roleText: `Co-Founder & Full Stack Developer`,
-              skills: ['react', 'aws', 'javascript']
+              skills: ['react', 'aws', 'vercel', 'cloudflare', 'javascript']
             })}
           />
           <PaperCard
@@ -340,6 +340,16 @@ export default function BulletinBoard() {
               type='sticker'
               size="sm"
               rot={-4}
+              onHoverChange={handleHoverChange}
+            />
+            <PaperCard
+              src="/assets/symbols/cloudflare.png"
+              alt="Cloudflare"
+              top="-3%"
+              left="9%"
+              type='sticker'
+              size="sm"
+              rot={12}
               onHoverChange={handleHoverChange}
             />
           </div>

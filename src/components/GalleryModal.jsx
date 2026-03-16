@@ -242,7 +242,7 @@ const GalleryModal = ({
                         </div>
 
                         <motion.div
-                            className="absolute top-[50%] -right-[10.8%] w-1/3 h-1/3 flex flex-col items-center justify-center font-semibold bg-no-repeat bg-contain bg-center"
+                            className="absolute bottom-[0%] -right-[10.8%] w-1/3 h-1/3 flex flex-col items-center justify-center font-semibold bg-no-repeat bg-contain bg-center"
                             style={{ backgroundImage: `url(assets/pins/paperClip.png)` }}
                             initial={{ rotate: 95, filter: `drop-shadow(-2px 2px 2px rgba(0, 0, 0, .2))` }}
                         />
