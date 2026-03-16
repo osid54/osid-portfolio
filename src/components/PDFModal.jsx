@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { GoDownload, GoX } from 'react-icons/go';
+
 
 const PDFModal = ({ isOpen, onClose, pdfSrc, imageUrl, downloadFileName, bgUrl, downloadLabel }) => {
   if (!isOpen) return null;
@@ -27,7 +29,7 @@ const PDFModal = ({ isOpen, onClose, pdfSrc, imageUrl, downloadFileName, bgUrl, 
       </AnimatePresence>
       <AnimatePresence>
         {visible && <motion.div 
-        className="bg-white p-4 rounded-lg shadow-lg w-3/4 h-auto max-h-3/4 flex flex-col relative"
+        className="bg-white p-4 rounded-lg shadow-lg w-5/6 md:w-3/5 h-auto max-h-5/6 flex flex-col relative"
           style={{ backgroundImage: `url(assets/papers/${bgUrl}.jpg)` }}
           onClick={(e) => e.stopPropagation()}
           initial={{ scale: 0 }}
@@ -37,13 +39,13 @@ const PDFModal = ({ isOpen, onClose, pdfSrc, imageUrl, downloadFileName, bgUrl, 
         >
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 text-gray-700 hover:text-red-500 text-2xl font-bold cursor-pointer"
+            className="absolute cursor-pointer z-20 min-h-5 min-w-5 h-[5%] w-[5%] right-[2%] top-[3%] items-center justify-center flex text-gray-500/70 hover:text-red-500/70"
           >
-            &times;
+            <GoX className='rounded-sm md:rounded-lg h-full w-full hover:h-full hover:w-full' />
           </button>
 
           <div
-            className="flex-grow overflow-y-auto mb-4 flex flex-col rounded-lg text-center scrollbar scrollbar-thumb-gray-500 scrollbar-track-transparent"
+            className="grow overflow-y-auto mb-4 flex flex-col rounded-lg text-center scrollbar scrollbar-thumb-gray-500 scrollbar-track-transparent"
           >
             {imageUrl ? (
               <img
@@ -56,18 +58,14 @@ const PDFModal = ({ isOpen, onClose, pdfSrc, imageUrl, downloadFileName, bgUrl, 
             )}
           </div>
 
-          {(isPdfDownload || imageUrl) && downloadFileName && (
-            <div className="flex justify-center h-8 md:h-20 lg:h-30 xxxl:h-40 4k:h-50 items-center">
+          {(isPdfDownload || imageUrl) && downloadFileName && ( //h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12
+            <div className="absolute cursor-pointer z-20 min-h-5 min-w-5 h-[5%] w-[5%] right-[3%] bottom-[3%] items-center justify-center flex">
               <a
                 href={isPdfDownload ? pdfSrc : imageUrl}
                 download={downloadFileName}
-                className="flex rounded-full bg-gray-500 hover:bg-gray-400 font-medium text-base md:text-3xl 4k:text-5xl h-[80%] w-[125px] md:w-[250px] 4k:w-[400px] justify-center items-center text-center cursor-pointer"
-                style={{ fontFamily: 'Architex' }}
+                className="h-full w-full"
               >
-                <span
-                  style={{ position: 'relative', top: '5px' }}>
-                  Download {downloadLabel}
-                </span>
+                <GoDownload className='rounded-sm lg:rounded-lg h-full w-full hover:h-full hover:w-full text-white hover:opacity-50 bg-gray-500/50' />
               </a>
             </div>
           )}
