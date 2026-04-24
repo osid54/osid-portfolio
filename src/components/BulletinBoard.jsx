@@ -92,7 +92,7 @@ export default function BulletinBoard() {
             onClick={() => openGalleryModal({
               imageSrc: "/assets/logos/stardewdleLogo.png",
               linkHref: "stardewdle.com",
-              textContent: "Stardewdle is a Wordle-inspired game based on the hit game Stardew Valley. Every day, players have to guess the daily crop, narrowing down their guesses based on qualitative and quantitative information. The frontend is built in React and hosted through Vercel, and the serverless backend is hosted through AWS Lambda, API Gateway, and DynamoDB, as well as Cloudflare R2.",
+              textContent: "Stardewdle is a Wordle-inspired game based on the hit game Stardew Valley. Every day, players guess the daily crop, narrowing down their guesses based on qualitative and quantitative information. The frontend is built in React and hosted through AWS Amplify, and the serverless backend is hosted through AWS Lambda, API Gateway, and DynamoDB, as well as Cloudflare R2.",
               galleryImages: [
                 '/assets/screenshots/stardewdle/stardewdle1.png',
                 '/assets/screenshots/stardewdle/stardewdle2.png',
@@ -110,7 +110,7 @@ export default function BulletinBoard() {
               dates: ['May 2025', 'March 2026'],
               githubLink: 'chrismarquezz/Stardewdle',
               roleText: `Co-Founder & Full Stack Developer`,
-              skills: ['react', 'aws', 'vercel', 'cloudflare', 'javascript']
+              skills: ['react', 'aws', 'cloudflare', 'javascript']
             })}
           />
           <PaperCard
@@ -267,6 +267,16 @@ export default function BulletinBoard() {
               type='sticker'
               size="sm"
               rot={15}
+              onHoverChange={handleHoverChange}
+            />
+            <PaperCard
+              src="/assets/symbols/matlab.png"
+              alt="MATLAB"
+              top="20%"
+              left="-6%"
+              type='sticker'
+              size="sm"
+              rot={-5}
               onHoverChange={handleHoverChange}
             />
             <PaperCard
