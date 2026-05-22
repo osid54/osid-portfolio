@@ -232,31 +232,41 @@ export default function BulletinBoard() {
             <PaperCard
               src="/assets/symbols/javascript.png"
               alt="JavaScript"
-              top="0%"
-              left="-1%"
+              top="2%"
+              left="-6%"
               type='sticker'
               size="sm"
               rot={-12}
               onHoverChange={handleHoverChange}
             />
             <PaperCard
-              src="/assets/symbols/python.png"
-              alt="Python"
+              src="/assets/symbols/java.png"
+              alt="Java"
               top="0%"
-              left="5%"
+              left="0%"
               type='sticker'
               size="sm"
-              rot={7}
+              rot={5}
               onHoverChange={handleHoverChange}
             />
             <PaperCard
-              src="/assets/symbols/java.png"
-              alt="Java"
-              top="10%"
+              src="/assets/symbols/python.png"
+              alt="python"
+              top="0.5%"
+              left="6%"
+              type='sticker'
+              size="sm"
+              rot={3}
+              onHoverChange={handleHoverChange}
+            />
+            <PaperCard
+              src="/assets/symbols/csharp.png"
+              alt="C#"
+              top="11%"
               left="-3%"
               type='sticker'
               size="sm"
-              rot={-3}
+              rot={-1}
               onHoverChange={handleHoverChange}
             />
             <PaperCard
@@ -272,7 +282,7 @@ export default function BulletinBoard() {
             <PaperCard
               src="/assets/symbols/matlab.png"
               alt="MATLAB"
-              top="20%"
+              top="21%"
               left="-6%"
               type='sticker'
               size="sm"
@@ -503,7 +513,7 @@ export default function BulletinBoard() {
         </div>
 
         { /* certifications */}
-        <div className="absolute top-[62%] left-[48%] w-full h-full pointer-events-none">
+        <div className="absolute top-[62%] left-[45%] w-full h-full pointer-events-none">
           <img
             className='absolute top-[4%] left-[0%] -translate-x-1/2 z-10 h-[5%]'
             src='/assets/titles/certifications.png'
@@ -513,7 +523,7 @@ export default function BulletinBoard() {
             src="/assets/postits/postit3.png"
             alt="AWS Certified Cloud Practitioner"
             top="11%"
-            left="-6%"
+            left="-12%"
             type="postit"
             logo="/assets/logos/aws.png"
             rot={-9}
@@ -525,7 +535,23 @@ export default function BulletinBoard() {
             onClick={() => window.open("https://www.credly.com/badges/4d6193ec-b166-41dd-a9e0-0537a6e71b28/linked_in_profile", "_blank")}
             onHoverChange={handleHoverChange}
           />
-        </div>
+          <PaperCard
+            src="/assets/postits/postit3.png"
+            alt="Foundational C# with Microsoft"
+            top="11%"
+            left="0%"
+            type="postit"
+            logo="/assets/logos/csharp.png"
+            rot={3}
+            hue={170}
+            logoSize={80}
+            logoOffsetX={3}
+            logoOpacity={100}
+            size='lg'
+            onClick={() => window.open("https://www.freecodecamp.org/certification/osid54/foundational-c-sharp-with-microsoft", "_blank")}
+            onHoverChange={handleHoverChange}
+          />
+        </div> 
 
         {/* postits */}
         <div className="absolute top-[22%] left-[9%] w-full h-full pointer-events-none">
@@ -702,7 +728,7 @@ export default function BulletinBoard() {
       */}
 
         {/* pins */}
-        <div className="absolute top-[81%] left-[31%] w-full h-full pointer-events-none">
+        <div className="absolute top-[62%] left-[26%] w-full h-full pointer-events-none">
           <img
             className='absolute top-[0%] left-[00%] z-10 h-[4%]'
             src='/assets/pins/pin1.png'
