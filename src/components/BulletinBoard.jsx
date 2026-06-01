@@ -92,7 +92,7 @@ export default function BulletinBoard() {
             onClick={() => openGalleryModal({
               imageSrc: "/assets/logos/stardewdleLogo.png",
               linkHref: "stardewdle.com",
-              textContent: "Stardewdle is a Wordle-inspired game based on the hit game Stardew Valley. Every day, players guess the daily crop, narrowing down their guesses based on qualitative and quantitative information. The frontend is built in React and hosted through AWS Amplify, and the serverless backend is hosted through AWS Lambda, API Gateway, and DynamoDB, as well as Cloudflare R2.",
+              textContent: "Stardewdle is a Wordle-inspired game based on the hit game Stardew Valley. Every day, players guess the daily crop, narrowing down their guesses based on qualitative and quantitative information. The frontend, built in React with Vite, is hosted through AWS Amplify, and the serverless backend is hosted through AWS Lambda, API Gateway, and DynamoDB, as well as Cloudflare R2.",
               galleryImages: [
                 '/assets/screenshots/stardewdle/stardewdle1.png',
                 '/assets/screenshots/stardewdle/stardewdle2.png',
@@ -107,7 +107,7 @@ export default function BulletinBoard() {
                 'When a game is completed, users can see the time until the next daily crop is available, as well as how many other people have played today. They can also share their results via the share button.',
                 'In addition to the desktop version, Stardewdle is fully mobile responsive and playable on any mobile device.',
               ],
-              dates: ['May 2025', 'March 2026'],
+              dates: ['May 2025', 'May 2026'],
               githubLink: 'chrismarquezz/Stardewdle',
               roleText: `Co-Founder & Full Stack Developer`,
               skills: ['react', 'aws', 'cloudflare', 'javascript']
@@ -251,7 +251,7 @@ export default function BulletinBoard() {
             />
             <PaperCard
               src="/assets/symbols/python.png"
-              alt="python"
+              alt="Python"
               top="0.5%"
               left="6%"
               type='sticker'
